@@ -18,7 +18,7 @@ def call(Map pipelineParams)
       }
       stage("create dockerimage and push to ECR")
       {
-        new imageCreationAndPushToECR().call(pipelineParams)
+        //new imageCreationAndPushToECR().call(pipelineParams)
       }
     }
   }
