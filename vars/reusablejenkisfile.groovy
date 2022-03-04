@@ -13,10 +13,11 @@ def call(Map pipelineParams)
       }
       stage("build")
       {
-        new buildAndCreateImage().call(pipelineParams)
+        new buildCode().call(pipelineParams)
       }
       stage("create dockerimage and push to ECR")
       {
+        new imageCreationAndPushToECR().call(pipelineParams)
       }
     }
   }
