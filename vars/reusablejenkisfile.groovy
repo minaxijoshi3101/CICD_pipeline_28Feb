@@ -4,7 +4,7 @@ def call(Map pipelineParams)
   
   pipeline
   {
-    node()
+    node(pipelineParams.BUILD_NODE)
     {
       stage("checkout SCM")
       {
