@@ -1,0 +1,26 @@
+3 tier applications end to end setup in AWS - db, caching redis, webservers - 
+following some design principles - 
+seperation of concers
+
+physical seperation of concers
+client 
+loadbalancers
+caching
+messaging queue
+server
+
+layers - 
+
+Elastic load balancer - application , nw and classic
+ansible
+mysql - RDS
+postgres - RDS
+mongodb - no RDS
+AWS - 
+Linux - 
+netwok analyser how does it work
+traceroute
+netstat -tunlp --port enable
+netstat -punto --> establish connection
+ss 
+ss -lt

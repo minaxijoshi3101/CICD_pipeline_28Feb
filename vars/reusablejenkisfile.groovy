@@ -1,5 +1,6 @@
 import com.seh.util.checkoutSCM;
 import com.seh.util.buildCode;
+//scripted pipeline
 def call(Map pipelineParams)
 {
   env.REPO=pipelinesParams.REPO
