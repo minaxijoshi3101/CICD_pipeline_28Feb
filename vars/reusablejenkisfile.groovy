@@ -20,6 +20,10 @@ def call(Map pipelineParams)
       {
         //new imageCreationAndPushToECR().call(pipelineParams)
       }
+      stage("deploy application using kubernetes")
+      {
+        new deployAll().call(pipelineParams)
+      }
     }
   }
 }
