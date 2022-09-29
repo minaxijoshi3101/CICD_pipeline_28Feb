@@ -1,5 +1,6 @@
 import com.seh.util.checkoutSCM;
 import com.seh.util.buildCode;
+import com.seh.util.deployAll;
 //scripted pipeline
 def call(Map pipelineParams)
 {
