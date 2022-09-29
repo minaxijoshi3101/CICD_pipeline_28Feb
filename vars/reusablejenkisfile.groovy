@@ -5,11 +5,11 @@ import com.seh.util.deployAll;
 
 def call(Map pipelineParams)
 {
-  try {
   env.REPO_NAME=pipelineParams.REPO_NAME
   env.GIT_GROUP=pipelineParams.GIT_GROUP
   pipeline
   {
+    try {
     node(pipelineParams.BUILD_NODE)
     {
       stage("checkout SCM")
@@ -28,13 +28,14 @@ def call(Map pipelineParams)
       {
         new deployAll().call(pipelineParams)
       }
+      }
+    catch(Exception e) {
+      throw e
     }
-  }
-  catch(err) {
-  throw err
-}
-finally{
-   cleanWs()
-}
+    finally{
+      cleanWs()
+    }
+    }
+  
 }
 
