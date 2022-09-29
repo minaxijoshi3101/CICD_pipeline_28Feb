@@ -1,5 +1,7 @@
 import com.seh.util.checkoutSCM;
-import com.seh.util.buildCode;
+import com.seh.util.buildCompileApp;
+import com.seh.util.uploadArtifacts;
+import com.seh.util.staticCodeAnalysis;
 import com.seh.util.deployAll;
 //scripted pipeline
 
@@ -12,16 +14,16 @@ def call(Map pipelineParams)
     try {
       node(pipelineParams.BUILD_NODE)
       {
-        stage("checkout SCM")
+        stage("Checkout SCM")
         {
           new checkoutSCM().call(pipelineParams)
         }
-        stage("build")
+        stage("Build Provisioning")
         {
           new buildCompileApp().call(pipelineParams)
         }
         stage("Static Code Analysis") {
-          //new staticCodeAnalysis().call(appParams,buildParams)
+          new staticCodeAnalysis().call(appParams,buildParams)
         }
         stage("Upload to Artifact Nexus Repo") {
           new uploadArtifacts().call(buildParams)
