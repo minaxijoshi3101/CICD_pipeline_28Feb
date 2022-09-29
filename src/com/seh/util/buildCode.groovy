@@ -6,7 +6,7 @@ def call(Map pipelineParams)
   {
   sh '''
   echo "build the java code using maven"
-  cd $REPO
+  cd $REPO/springmvc
   mvn clean package
   '''
   }
