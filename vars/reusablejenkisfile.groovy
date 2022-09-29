@@ -23,10 +23,10 @@ def call(Map pipelineParams)
           new buildCompileApp().call(pipelineParams)
         }
         stage("Static Code Analysis") {
-          new staticCodeAnalysis().call(appParams,buildParams)
+          new staticCodeAnalysis().call(pipelineParams)
         }
         stage("Upload to Artifact Nexus Repo") {
-          new uploadArtifacts().call(buildParams)
+          new uploadArtifacts().call(pipelineParams)
         }
         stage("create dockerimage and push to ECR")
         {
