@@ -10,24 +10,30 @@ def call(Map pipelineParams)
   pipeline
   {
     try {
-    node(pipelineParams.BUILD_NODE)
-    {
-      stage("checkout SCM")
+      node(pipelineParams.BUILD_NODE)
       {
-        new checkoutSCM().call(pipelineParams)
-      }
-      stage("build")
-      {
-        new buildCode().call(pipelineParams)
-      }
-      stage("create dockerimage and push to ECR")
-      {
-        //new imageCreationAndPushToECR().call(pipelineParams)
-      }
-      stage("deploy application using kubernetes")
-      {
-        new deployAll().call(pipelineParams)
-      }
+        stage("checkout SCM")
+        {
+          new checkoutSCM().call(pipelineParams)
+        }
+        stage("build")
+        {
+          new buildCompileApp().call(pipelineParams)
+        }
+        stage("Static Code Analysis") {
+          //new staticCodeAnalysis().call(appParams,buildParams)
+        }
+        stage("Upload to Artifact Nexus Repo") {
+          new uploadArtifacts().call(buildParams)
+        }
+        stage("create dockerimage and push to ECR")
+        {
+          //new imageCreationAndPushToECR().call(pipelineParams)
+        }
+        stage("deploy application using ECS")
+        {
+          new deployAll().call(pipelineParams)
+        }
       }
     }
     catch(Exception e) {
@@ -36,7 +42,6 @@ def call(Map pipelineParams)
     finally{
       cleanWs()
     }
-    }
-  
+  }
 }
 
