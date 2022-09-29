@@ -2,9 +2,10 @@ import com.seh.util.checkoutSCM;
 import com.seh.util.buildCode;
 import com.seh.util.deployAll;
 //scripted pipeline
-try {
+
 def call(Map pipelineParams)
 {
+  try {
   env.REPO_NAME=pipelineParams.REPO_NAME
   env.GIT_GROUP=pipelineParams.GIT_GROUP
   pipeline
@@ -29,10 +30,11 @@ def call(Map pipelineParams)
       }
     }
   }
-}
-catch(errr) {
+  catch(errr) {
   throw err
 }
 finally{
    cleanWs()
 }
+}
+
