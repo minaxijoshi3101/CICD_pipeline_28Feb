@@ -6,7 +6,7 @@ def call(Map pipelineParams)
   {
   sh '''
   echo "build the java code using maven"
-  cd $REPO/springmvc
+  cd $REPO_NAME/springmvc
   mvn clean package
   '''
   }
@@ -14,7 +14,7 @@ def call(Map pipelineParams)
   {
     sh '''
     echo "build the node application using npm"
-    cd $REPO
+    cd $REPO_NAME
     npm start
     '''
   }
