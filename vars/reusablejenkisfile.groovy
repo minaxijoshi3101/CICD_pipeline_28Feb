@@ -30,7 +30,7 @@ def call(Map pipelineParams)
       }
     }
   }
-  catch(errr) {
+  catch(err) {
   throw err
 }
 finally{
