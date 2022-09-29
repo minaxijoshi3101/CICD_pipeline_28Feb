@@ -29,6 +29,7 @@ def call(Map pipelineParams)
         new deployAll().call(pipelineParams)
       }
       }
+    }
     catch(Exception e) {
       throw e
     }
