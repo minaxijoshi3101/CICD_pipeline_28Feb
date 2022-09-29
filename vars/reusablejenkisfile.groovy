@@ -4,8 +4,8 @@ import com.seh.util.deployAll;
 //scripted pipeline
 def call(Map pipelineParams)
 {
-  env.REPO=pipelinesParams.REPO
-  env.GIT_GROUP=pipelinesParams.GIT_GROUP
+  env.REPO=pipelineParams.REPO
+  env.GIT_GROUP=pipelineParams.GIT_GROUP
   pipeline
   {
     node(pipelineParams.BUILD_NODE)
