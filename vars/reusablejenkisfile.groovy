@@ -2,6 +2,7 @@ import com.seh.util.checkoutSCM;
 import com.seh.util.buildCode;
 import com.seh.util.deployAll;
 //scripted pipeline
+try {
 def call(Map pipelineParams)
 {
   env.REPO_NAME=pipelineParams.REPO_NAME
@@ -28,4 +29,10 @@ def call(Map pipelineParams)
       }
     }
   }
+}
+catch(errr) {
+  throw err
+}
+finally{
+   cleanWs()
 }
